@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-TW" id="html">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body id="btn">
+  移除事件後，點下這按鈕會console.log('HI')嗎?
+  <button id="btn">Hi</button>
+
+  <script>
+    const btn = document.getElementById('btn');
+
+    btn.addEventListener('click', function () {
+      console.log('HI');
+    }, false);
+
+    // 移除事件，但是沒用
+    btn.removeEventListener('click', function () {
+      console.log('HI');
+    }, false);
+
+  </script>
+</body>
+
+</html>

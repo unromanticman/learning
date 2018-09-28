@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-TW" id="html">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body id="body">
+  <div id="parent">
+    父元素
+    <div id="child">子元素</div>
+  </div>
+  <script>
+
+    // html
+    const html = document.getElementById('html');
+    // body
+    const body = document.getElementById('body');
+    // 父元素
+    const parent = document.getElementById('parent');
+    // 子元素
+    const child = document.getElementById('child');
+    // 計數器
+    let counter = 0;
+
+    // 透過 addEventListener 指定事件的綁定
+    // 第三個參數 true / false 分別代表捕獲/ 冒泡 機制
+    // 預設為「冒泡」
+
+    html.addEventListener('click', function () {
+      console.log(++counter, 'Html Capturing');
+    }, true);
+    html.addEventListener('click', function () {
+      console.log(++counter, 'Html Bubbling');
+    }, false);
+
+    body.addEventListener('click', function () {
+      console.log(++counter, 'Body Capturing');
+    }, true);
+    body.addEventListener('click', function () {
+      console.log(++counter, 'Body Bubbling');
+    }, false);
+
+    parent.addEventListener('click', function () {
+      console.log(++counter, 'Parent Capturing');
+    }, true);
+    parent.addEventListener('click', function () {
+      console.log(++counter, 'Parent Bubbling');
+    }, false);
+
+    child.addEventListener('click', function () {
+      console.log(++counter, 'Child Bubbling');
+    }, false);
+    child.addEventListener('click', function () {
+      console.log(++counter, 'Child Capturing');
+    }, true);
+  </script>
+</body>
+
+</html>
